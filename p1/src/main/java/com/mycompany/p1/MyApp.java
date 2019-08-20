@@ -1,6 +1,8 @@
 
 package com.mycompany.p1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -125,6 +127,13 @@ public class MyApp {
         
         System.out.println("prixTotal=" + caddy.totalPrice());
         System.out.println("caddy="+caddy.toString());
+    }
+    
+    private void testCollection(){
+        List<Integer> listDeInteger = new ArrayList<>();
+        //remplir avec .add() .add() .add()
+        //parcours n° 1 pour multiplier toutes les valeurs par 2
+        //parcours n° 2 pour afficher les valeurs.
     }
     
     //MyApp.main() sans new au niveau JVM
