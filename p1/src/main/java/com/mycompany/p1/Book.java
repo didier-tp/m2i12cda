@@ -1,14 +1,22 @@
 
 package com.mycompany.p1;
 
-/**
- *
- * @author Administrateur
- */
+
 public class Book extends Product {
     //attributs supplémentaires :
     private String auteur;
     private String editeur;
+    
+    public Book(){
+        super();
+        this.editeur="editeur par defaut";
+    }
+    
+    public Book(Long ref,String label,Double prix,String auteur,String editeur){
+        super(ref,label,prix);//passage de param au constructeur hérité de Product
+        this.auteur=auteur;
+        this.editeur=editeur;
+    }
 
     @Override
     public String toString() {
@@ -16,8 +24,6 @@ public class Book extends Product {
                 + " heritant de " + super.toString();
     }
     
-    
-
     public String getAuteur() {
         return auteur;
     }

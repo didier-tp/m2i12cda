@@ -85,8 +85,11 @@ public class MyApp {
         b1.setEditeur("Editeur Xy");
         System.out.println("b1="+b1.toString());
         
+        Book b2 = new Book(2L,"livre 2",15.6,"auteur Aa" , "editeur Bb");
+        System.out.println("b2="+b2.toString());
+        
     }
-    
+    //MyApp.main() sans new au niveau JVM
     public static void main(String[] args) {
         //testMath();
         //testProduct();
