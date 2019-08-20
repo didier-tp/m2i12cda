@@ -88,7 +88,23 @@ public class MyApp {
         Book b2 = new Book(2L,"livre 2",15.6,"auteur Aa" , "editeur Bb");
         System.out.println("b2="+b2.toString());
         
-    }
+        Product refProd = null;
+        //refProd= new Product(3L,"prod 3" , 3.3);
+        refProd = b2; //Book heritant de Product est vu par java
+                       //comme un cas particulier de Product
+        refProd.appliquerPromo(10);
+        
+        
+        //refProd.setAuteur("auteur qui va bien"); interdit car setAuteur() 
+        //n'est appelable sur n'importe quel Product
+        if(refProd instanceof Book){
+             Book refBook = (Book) refProd;
+             refBook.setAuteur("auteur qui va bien");
+        }
+        
+        System.out.println("refProd="+refProd.toString());
+  
+     }
     //MyApp.main() sans new au niveau JVM
     public static void main(String[] args) {
         //testMath();
