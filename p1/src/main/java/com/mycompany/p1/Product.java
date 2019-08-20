@@ -10,6 +10,8 @@ import java.util.Objects;
 // @Getter @Setter @NoArgsConstructor() @ToString de la techno lombok
 public class Product /* extends Object */ {
     
+    public static final double PRIX_MINI=0.10;
+    
     private Long ref;   // null est une valeur possible et par défaut pour Long
                 // null serait une valeur impossible pour un long 
     private String label;
@@ -20,7 +22,7 @@ public class Product /* extends Object */ {
     }
     
     public void setPrice(Double price){
-        if( price == null || price>=0)
+        if( price == null || price>= PRIX_MINI)
              this.price=price;
         else { System.out.println("prix negatif interdit");
                 this.price=null;

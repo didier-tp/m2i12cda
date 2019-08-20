@@ -8,6 +8,7 @@ package com.mycompany.p1;
 public class MyApp {
     
     private static void testProduct(){
+        System.out.println("PRIX_MINI="+ Product.PRIX_MINI);
         Product p1 = null;
         p1 = new Product();
         p1.setPrice(-12.5); //p1.price = 12.5; 
@@ -61,8 +62,18 @@ public class MyApp {
         }
     }
     
+    public static void testMath(){
+        double x=4;
+        double y=5;
+        double h = Math.sqrt( Math.pow(x, 2)+Math.pow(y, 2) ) ;
+        System.out.println("h="+h);
+        double r=10;
+        double s=Math.PI * Math.pow(r,2);
+        System.out.println("s="+s);
+    }
+    
     public static void main(String[] args) {
-        
+        testMath();
         testProduct();
         testStringTableau();
         
