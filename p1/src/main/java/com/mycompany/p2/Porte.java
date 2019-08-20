@@ -2,11 +2,11 @@
 package com.mycompany.p2;
 
 
-public class Porte {
+public abstract class Porte {
     private String couleur="blank"; //+get/set
     
-    public void ouvrir() { } //code précis dans classes héritées
-    public void fermer() { }
+    public abstract void ouvrir() ; //code précis dans classes héritées
+    public abstract void fermer() ;
 
     public String getCouleur() {
         return couleur;

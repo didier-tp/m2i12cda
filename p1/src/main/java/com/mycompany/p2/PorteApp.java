@@ -5,6 +5,8 @@ package com.mycompany.p2;
 public class PorteApp {
      public static void testPorte(){
          Porte p = null; //reference sur porte quelconque
+         //p= new Porte(); //possible si pas de mot clef abstract
+         
          p = new PortePivotante();
          p.setCouleur("black");
          p.ouvrir();

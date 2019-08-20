@@ -5,6 +5,7 @@ package com.mycompany.p2;
 public class PortePivotante extends Porte {
     private double angle = 0; //angle ouverture (0 = fermé , 90 = ouvert)
 
+   
     @Override
     public void ouvrir() {
         this.setAngle(90);
@@ -31,5 +32,6 @@ public class PortePivotante extends Porte {
     public void setAngle(double angle) {
         this.angle = angle;
     }
-    
+
+   
 }
