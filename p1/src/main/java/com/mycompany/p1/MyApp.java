@@ -124,7 +124,7 @@ public class MyApp {
         caddy.addItem(d1);
         
         System.out.println("prixTotal=" + caddy.totalPrice());
-        
+        System.out.println("caddy="+caddy.toString());
     }
     
     //MyApp.main() sans new au niveau JVM

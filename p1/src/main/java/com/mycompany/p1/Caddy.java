@@ -23,5 +23,15 @@ public class Caddy {
        }
        return prixTotal;
     }
+
+    @Override
+    public String toString() {
+        String contenu = "Caddy{ nbItems=" + nbItems + ",items=" ;
+         for(int i=0; i<nbItems;i++){
+             contenu += items[i].toString();
+         }
+        return contenu + '}';
+    
+    }
     
 }
