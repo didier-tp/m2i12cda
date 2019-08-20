@@ -8,7 +8,7 @@ import java.util.Objects;
  * @author Administrateur
  */
 // @Getter @Setter @NoArgsConstructor() @ToString de la techno lombok
-public class Product /* extends Object */ {
+public class Product /* extends Object */ implements Buyable {
     
     public static final double PRIX_MINI=0.10;
     
@@ -105,8 +105,8 @@ public class Product /* extends Object */ {
         }
         return true;
     }
-   
-    
+
+       
     
     
 }

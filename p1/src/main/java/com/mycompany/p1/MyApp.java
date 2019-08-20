@@ -43,6 +43,12 @@ public class MyApp {
         if(p2 instanceof Product){
             System.out.println("p2 est de type Product");
         }
+        
+        Buyable choseAchetable=null;
+        //choseAchetable = new Byable(); //new impossible sur interface
+        choseAchetable = p2;
+        System.out.println("prix chose achetable = " 
+                           + choseAchetable.getPrice());
     }
     
     private static void testStringTableau(){
@@ -108,7 +114,7 @@ public class MyApp {
     //MyApp.main() sans new au niveau JVM
     public static void main(String[] args) {
         //testMath();
-        //testProduct();
+        testProduct();
         testBook();
         //testStringTableau();
         
