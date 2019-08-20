@@ -9,7 +9,7 @@ public class PorteApp {
          p.setCouleur("black");
          p.ouvrir();
          p.fermer();
-        // p = new PorteCoulissante();
+         p = new PorteCoulissante();
          p.ouvrir();
          p.fermer();
      }

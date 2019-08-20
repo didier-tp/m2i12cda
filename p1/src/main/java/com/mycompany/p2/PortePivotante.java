@@ -10,6 +10,12 @@ public class PortePivotante extends Porte {
         this.setAngle(90);
         System.out.println("PortePivotante ouverte=" + this.toString());
     }
+    
+    @Override
+    public void fermer() {
+        this.setAngle(0);
+        System.out.println("PortePivotante fermee=" + this.toString());
+    }
 
     @Override
     public String toString() {
