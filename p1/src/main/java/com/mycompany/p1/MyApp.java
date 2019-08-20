@@ -111,11 +111,28 @@ public class MyApp {
         System.out.println("refProd="+refProd.toString());
   
      }
+    
+    private static void testCaddy(){
+        Caddy caddy = new Caddy();
+        
+        Product p1 = new Product(1L,"produit 1",12.0);
+        Book b1 = new Book(2L,"livre Xy",8.0,"auteur aa","editeur bb");
+        Delivery d1 = new Delivery();
+        
+        caddy.addItem(p1);
+        caddy.addItem(b1);
+        caddy.addItem(d1);
+        
+        System.out.println("prixTotal=" + caddy.totalPrice());
+        
+    }
+    
     //MyApp.main() sans new au niveau JVM
     public static void main(String[] args) {
+        testCaddy();
         //testMath();
-        testProduct();
-        testBook();
+        //testProduct();
+        //testBook();
         //testStringTableau();
         
         System.out.println("Hello world");
