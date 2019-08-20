@@ -1,6 +1,11 @@
 
 package com.mycompany.p1;
 
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+
+
 /**
  *
  * @author Administrateur
@@ -78,7 +83,14 @@ public class MyApp {
         testStringTableau();
         
         System.out.println("Hello world");
-        String chVal = "5";
+        String chVal = "5"; //valeur par défaut
+        /*
+        Scanner reader = new Scanner(System.in);
+        System.out.print("val:");
+        chVal = reader.next();
+        */
+        chVal = JOptionPane.showInputDialog("valeur de val ?");
+        //nécessite import javax.swing.JOptionPane;
 
         int val = Integer.parseInt(chVal);
         val = val * 2;
