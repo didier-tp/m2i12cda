@@ -77,10 +77,21 @@ public class MyApp {
         System.out.println("s="+s);
     }
     
+    public static void testBook(){
+        Book b1 = new Book();
+        b1.setPrice(12.5);
+        b1.setLabel("Les Miserables");
+        b1.setAuteur("Victor Hugo");
+        b1.setEditeur("Editeur Xy");
+        System.out.println("b1="+b1.toString());
+        
+    }
+    
     public static void main(String[] args) {
-        testMath();
-        testProduct();
-        testStringTableau();
+        //testMath();
+        //testProduct();
+        testBook();
+        //testStringTableau();
         
         System.out.println("Hello world");
         String chVal = "5"; //valeur par défaut
@@ -89,7 +100,8 @@ public class MyApp {
         System.out.print("val:");
         chVal = reader.next();
         */
-        chVal = JOptionPane.showInputDialog("valeur de val ?");
+        
+        //chVal = JOptionPane.showInputDialog("valeur de val ?");
         //nécessite import javax.swing.JOptionPane;
 
         int val = Integer.parseInt(chVal);
