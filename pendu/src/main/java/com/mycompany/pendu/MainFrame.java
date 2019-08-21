@@ -2,9 +2,12 @@
 package com.mycompany.pendu;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -24,6 +27,7 @@ public class MainFrame extends JFrame{
         
         //le niveau intermediaire .getContentPane() est
         //spécifique au JFrame
+        
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(this.panelHaut,BorderLayout.NORTH);
         this.getContentPane().add(this.panelDessin,BorderLayout.CENTER);
@@ -34,9 +38,23 @@ public class MainFrame extends JFrame{
         this.panelHaut.add(this.boutonRejouer);
         this.panelBas.add(this.labelMessage);//en FlowLayout par defaut
         
+        
+        this.boutonRejouer.addActionListener(new 
+               /* classe anonyme imbriquée implementant ... */           
+                  ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                boutonRejouer_actionPerformed(e);
+            }
+        });
+        
         this.setVisible(true);
         //fixer option "arreter/exit prog java lorsque fenetre sera fermee"
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }//fin de constructeur
+    
+    public void boutonRejouer_actionPerformed(ActionEvent e){
+        JOptionPane.showMessageDialog(null,"message temporaire");
+        //...
     }
        
     public static void main(String[] args) {
