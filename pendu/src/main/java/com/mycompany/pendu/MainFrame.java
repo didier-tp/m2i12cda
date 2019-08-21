@@ -15,8 +15,10 @@ import javax.swing.JTextField;
 
 public class MainFrame extends JFrame{
     
+    char lettreProposee='?';
+    
     JPanel panelHaut = new JPanel();
-    JPanel panelDessin = new JPanel();
+    PanelDessin panelDessin = new PanelDessin();
     JPanel panelBas = new JPanel();
     JLabel labelMessage = new JLabel("jusqu'ici tout va bien");
     JLabel labelMotADeviner = new JLabel("--------");
@@ -39,8 +41,7 @@ public class MainFrame extends JFrame{
         this.panelHaut.add(this.textProposition);
         this.panelHaut.add(this.boutonRejouer);
         this.panelBas.add(this.labelMessage);//en FlowLayout par defaut
-        
-        
+                
         this.boutonRejouer.addActionListener(new 
                /* classe anonyme imbriquée implementant ... */           
                   ActionListener(){
@@ -67,7 +68,11 @@ public class MainFrame extends JFrame{
     
     public void textProposition_keyReleased(KeyEvent e){
          //JOptionPane.showMessageDialog(null,"touche relachée");
+         this.lettreProposee = e.getKeyChar();
          this.labelMessage.setText("touche relachée = " + e.getKeyChar());
+         if(this.lettreProposee == '?'){
+             this.panelDessin.dessinerPartiePendu(1);
+         }
     }
        
     public static void main(String[] args) {
