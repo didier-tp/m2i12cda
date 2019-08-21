@@ -43,7 +43,7 @@ public class MainFrame extends JFrame{
         this.panelBas.setBackground(Color.LIGHT_GRAY);
         this.panelHaut.setBackground(Color.CYAN);
         
-        //this.textProposition.setMinimumSize(new Dimension(60,20));
+        this.textProposition.setPreferredSize(new Dimension(60,20));
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(this.panelHaut,BorderLayout.NORTH);
         this.getContentPane().add(this.panelDessin,BorderLayout.CENTER);
@@ -79,7 +79,8 @@ public class MainFrame extends JFrame{
         //JOptionPane.showMessageDialog(null,"message temporaire");
     	initialiserNouvellePartie();
     	this.boutonRejouer.setEnabled(false);//grisé par défaut
-    	//+setfocus sur textProposition
+    	this.textProposition.requestFocus();
+    	
     }
     
     private void initialiserNouvellePartie() {
