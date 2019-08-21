@@ -16,15 +16,22 @@ public class MyApp {
     
     private static void testProduct(){
         System.out.println("PRIX_MINI="+ Product.PRIX_MINI);
+        
         Product p1 = null;
-        p1 = new Product();
-        p1.setPrice(-12.5); //p1.price = 12.5; 
-        p1.setLabel("produit 1");//p1.label="produit 1"; 
-        p1.setRef(1L);//p1.ref=1L; //1L signifie 1 de type long (ou Long)
-        p1.appliquerPromo(20.0);
-        System.out.println("p1.price=" + p1.getPrice() /*p1.price*/);
-        //System.out.println("p1="+p1.toString());
-        System.out.println("p1="+p1);//p1.toString() appelée implicitement.
+        try {
+            p1 = new Product();
+            p1.setPrice(-12.5); //p1.price = 12.5; 
+            p1.setLabel("produit 1");//p1.label="produit 1"; 
+            p1.setRef(1L);//p1.ref=1L; //1L signifie 1 de type long (ou Long)
+            p1.appliquerPromo(20.0);
+            System.out.println("p1.price=" + p1.getPrice() /*p1.price*/);
+            //System.out.println("p1="+p1.toString());
+            System.out.println("p1=" + p1);//p1.toString() appelée implicitement.
+        } catch (Exception e) {
+            //System.out.println("exception remontée:" + e.getMessage());
+            //System.err.println("exception remontée:" + e.getMessage());
+            e.printStackTrace();
+        }
         
         Product p1Bis = new Product();
         p1Bis.setRef(p1.getRef());
@@ -129,18 +136,28 @@ public class MyApp {
         System.out.println("caddy="+caddy.toString());
     }
     
-    private void testCollection(){
+    private static void testCollection(){
         List<Integer> listDeInteger = new ArrayList<>();
-        //remplir avec .add() .add() .add()
+        listDeInteger.add(new Integer(12)); 
+        listDeInteger.add(8); 
+        listDeInteger.add(24);
         //parcours n° 1 pour multiplier toutes les valeurs par 2
+        for(int i=0;i<listDeInteger.size();i++){
+            Integer deuxFoisI = new Integer(2*listDeInteger.get(i));
+            listDeInteger.set(i, deuxFoisI);
+        }
         //parcours n° 2 pour afficher les valeurs.
+        for(Integer valI : listDeInteger){
+            System.out.println("valI=" + valI);
+        }
     }
     
     //MyApp.main() sans new au niveau JVM
     public static void main(String[] args) {
-        testCaddy();
+        //testCollection();
+        //testCaddy();
         //testMath();
-        //testProduct();
+        testProduct();
         //testBook();
         //testStringTableau();
         

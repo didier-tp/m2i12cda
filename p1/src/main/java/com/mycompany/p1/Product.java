@@ -24,10 +24,11 @@ public class Product /* extends Object */ implements Buyable {
     public void setPrice(Double price){
         if( price == null || price>= PRIX_MINI)
              this.price=price;
-        else { System.out.println("prix negatif interdit");
+        else { //System.out.println("prix negatif interdit");
                 this.price=null;
-               //this.price inchangé ou this.price = null ou ...
-               //plus tard throw new RuntimeException("prix negatif interdit");
+                throw 
+                  // new RuntimeException("le prix n'est pas supérieur à "+PRIX_MINI);
+                  new IllegalArgumentException("le prix n'est pas supérieur à "+PRIX_MINI);
         }
     }
 
