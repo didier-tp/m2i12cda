@@ -4,6 +4,8 @@ package com.mycompany.pendu;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -47,6 +49,12 @@ public class MainFrame extends JFrame{
             }
         });
         
+        this.textProposition.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent e){
+                textProposition_keyReleased(e);
+            }
+        });
+        
         this.setVisible(true);
         //fixer option "arreter/exit prog java lorsque fenetre sera fermee"
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,6 +63,10 @@ public class MainFrame extends JFrame{
     public void boutonRejouer_actionPerformed(ActionEvent e){
         JOptionPane.showMessageDialog(null,"message temporaire");
         //...
+    }
+    
+    public void textProposition_keyReleased(KeyEvent e){
+         JOptionPane.showMessageDialog(null,"touche relachée");
     }
        
     public static void main(String[] args) {
