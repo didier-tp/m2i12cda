@@ -64,6 +64,7 @@ public class MainFrame extends JFrame{
     public void boutonRejouer_actionPerformed(ActionEvent e){
         //JOptionPane.showMessageDialog(null,"message temporaire");
         this.labelMessage.setText("nouvelle partie");
+        this.panelDessin.effacerPendu();
     }
     
     public void textProposition_keyReleased(KeyEvent e){
