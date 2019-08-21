@@ -16,6 +16,28 @@ import javax.swing.JTextField;
 public class MainFrame extends JFrame{
     
     char lettreProposee='?';
+    int nbEchecs = 0;
+    String motAtrouver = "java" ;//valeur par défaut
+    public static final int NB_MAX_ESSAIS=6;
+    //...
+    
+    public void textProposition_keyReleased(KeyEvent e){
+         //JOptionPane.showMessageDialog(null,"touche relachée");
+         this.lettreProposee = e.getKeyChar();
+         this.textProposition.setText(String.valueOf(this.lettreProposee));
+         this.labelMessage.setText("touche relachée = " + e.getKeyChar());
+         int pos = this.motAtrouver.indexOf(this.lettreProposee);
+         if(pos == -1){
+             this.nbEchecs++;
+             this.panelDessin.dessinerPartiePendu(this.nbEchecs);
+             if(this.nbEchecs == NB_MAX_ESSAIS)
+                 this.labelMessage.setText("PENDU !!!! le mot à deviner était " 
+                                           + this.motAtrouver);
+         } else {
+             //afficher bonne lettre à la place d'un -
+         }
+        
+    }
     
     JPanel panelHaut = new JPanel();
     PanelDessin panelDessin = new PanelDessin();
@@ -67,14 +89,7 @@ public class MainFrame extends JFrame{
         this.panelDessin.effacerPendu();
     }
     
-    public void textProposition_keyReleased(KeyEvent e){
-         //JOptionPane.showMessageDialog(null,"touche relachée");
-         this.lettreProposee = e.getKeyChar();
-         this.labelMessage.setText("touche relachée = " + e.getKeyChar());
-         if(this.lettreProposee == '?'){
-             this.panelDessin.dessinerPartiePendu(1);
-         }
-    }
+    
        
     public static void main(String[] args) {
         MainFrame thisApp = new MainFrame();
