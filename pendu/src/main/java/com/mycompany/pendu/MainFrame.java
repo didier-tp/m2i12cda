@@ -61,12 +61,13 @@ public class MainFrame extends JFrame{
     }//fin de constructeur
     
     public void boutonRejouer_actionPerformed(ActionEvent e){
-        JOptionPane.showMessageDialog(null,"message temporaire");
-        //...
+        //JOptionPane.showMessageDialog(null,"message temporaire");
+        this.labelMessage.setText("nouvelle partie");
     }
     
     public void textProposition_keyReleased(KeyEvent e){
-         JOptionPane.showMessageDialog(null,"touche relachée");
+         //JOptionPane.showMessageDialog(null,"touche relachée");
+         this.labelMessage.setText("touche relachée = " + e.getKeyChar());
     }
        
     public static void main(String[] args) {
