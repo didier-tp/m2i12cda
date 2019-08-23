@@ -60,7 +60,8 @@ public class AppFichiers {
             Comparator<Person>(){
                     @Override
                     public int compare(Person p1, Person p2) {
-                        return (p1.getSize() - p2.getSize());
+                        return (p1.getSize() - p2.getSize());//tri par taille 
+                        //return p1.getName().compareTo(p2.getName());//tri par nom
                     }
                 });
         for(Person p : this.listePers){
