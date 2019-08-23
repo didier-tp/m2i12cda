@@ -24,6 +24,7 @@ import java.util.logging.Logger;
  */
 public class AppFichiers {
     private List<Person> listePers = new ArrayList<>();
+    private Stats stats = new Stats();
     
     private void chargerFichier(String pathName){
         try {
@@ -50,6 +51,7 @@ public class AppFichiers {
             e.printStackTrace();
         }
     }
+    
     private void modifierListePersonnes(){ 
         for(Person p : this.listePers){
             //transformer le nom en majuscule:
@@ -68,6 +70,26 @@ public class AppFichiers {
            System.out.println("p="+p.toString());
         }
     }
+    
+    private void calculerStats(){
+        int nbPers=0;
+        int tailleMini=-1;
+        int tailleMaxi=0;
+        double sommeTaille = 0.0;
+         for(Person p : this.listePers){
+            nbPers++;
+            sommeTaille+=p.getSize();
+            if(p.getSize()>=tailleMaxi)
+                tailleMaxi = p.getSize();
+            if(tailleMini==-1 || p.getSize()<=tailleMini)
+                tailleMini = p.getSize();
+        }
+        this.stats.setNbPers(nbPers);
+        this.stats.setTailleMax(tailleMaxi);
+        this.stats.setTailleMini(tailleMini);
+        this.stats.setTailleMoyenne(sommeTaille/nbPers);
+    }
+    
     private void ecrireFichier(String pathName){
         try {
             FileOutputStream flux1 = new FileOutputStream(pathName);
@@ -82,11 +104,28 @@ public class AppFichiers {
             //Logger.getLogger(AppFichiers.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     private void ecrireFicStats(){
+        try {
+            FileOutputStream flux1 = new FileOutputStream("stats.txt");
+            PrintStream flux2 = new PrintStream(flux1);
+            flux2.println("nbPers="+this.stats.getNbPers());
+            flux2.println("tailleMax="+this.stats.getTailleMax());
+            flux2.println("tailleMini="+this.stats.getTailleMini());
+            flux2.println("tailleMoyenne="+this.stats.getTailleMoyenne());
+            flux2.close(); flux1.close(); //améliorable
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            //Logger.getLogger(AppFichiers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public static void main(String[] args) {
         AppFichiers thisApp = new AppFichiers();
         thisApp.chargerFichier("personnes.csv");
         thisApp.modifierListePersonnes();
         thisApp.ecrireFichier("personnes2.csv");
+        thisApp.calculerStats();
+        thisApp.ecrireFicStats();
     }
     
     public AppFichiers() {
