@@ -17,6 +17,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -52,13 +53,22 @@ public class AppFichiers {
         }
     }
     
-    private void modifierListePersonnes(){ 
+     private void modifierListePersonnes(){
+         this.listePers =
+         this.listePers.stream()
+             .map( (p) -> { p.setName(p.getName().toUpperCase()); return p; })
+             .sorted((p1,p2)->(p1.getSize() - p2.getSize()))
+             .collect(Collectors.toList());
+     } 
+    
+    private void modifierListePersonnesV1(){ 
         for(Person p : this.listePers){
             //transformer le nom en majuscule:
             p.setName(p.getName().toUpperCase());
             //System.out.println("p="+p.toString());
         }
-        listePers.sort(new /* classe anonyme imbriquee implementant ... */
+        /* avec classe anonyme imbriquee implementant ... */
+       /* listePers.sort(new 
             Comparator<Person>(){
                     @Override
                     public int compare(Person p1, Person p2) {
@@ -66,6 +76,10 @@ public class AppFichiers {
                         //return p1.getName().compareTo(p2.getName());//tri par nom
                     }
                 });
+         */
+         //listePers.sort( (p1,p2)-> { return (p1.getSize() - p2.getSize()); });
+         listePers.sort( (p1,p2)->(p1.getSize() - p2.getSize()));
+         
         for(Person p : this.listePers){
            System.out.println("p="+p.toString());
         }
