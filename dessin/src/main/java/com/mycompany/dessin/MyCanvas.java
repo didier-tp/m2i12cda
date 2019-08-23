@@ -51,7 +51,7 @@ public class MyCanvas extends JPanel {
 			fig.dessiner(g);
 		}
 	}
-
+        
 
 
 	void myCanvas_mousePressed(MouseEvent e){
