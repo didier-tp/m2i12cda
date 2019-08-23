@@ -27,17 +27,28 @@ public class AppFichiers {
             BufferedReader flux3 = new BufferedReader(flux2);
             //flux3 basé sur flux2 basé sur flux1 (design patern "decorateur")
             String ligne=null;
+            int numLigne = 0;
             do {
                 ligne = flux3.readLine();
+                numLigne++;
                 System.out.println("ligne lue=" + ligne);
+                if(numLigne>1 && ligne !=null){
+                    String[] tabParties = ligne.split(";");
+                    String nom = tabParties[0];
+                    Integer taille = Integer.parseInt(tabParties[1]);
+                    Person p = new Person(nom,taille);
+                    this.listePers.add(p);
+                }
             }while(ligne != null);
-            
+           flux3.close(); flux2.close(); flux1.close(); //ameliorable
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     private void modifierListePersonnes(){ 
-        
+        for(Person p : this.listePers){
+            System.out.println("p="+p.toString());
+        }
     }
     private void ecrireFichier(String pathName){
         
