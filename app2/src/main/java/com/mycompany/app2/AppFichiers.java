@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +52,19 @@ public class AppFichiers {
     }
     private void modifierListePersonnes(){ 
         for(Person p : this.listePers){
-            System.out.println("p="+p.toString());
+            //transformer le nom en majuscule:
+            p.setName(p.getName().toUpperCase());
+            //System.out.println("p="+p.toString());
+        }
+        listePers.sort(new /* classe anonyme imbriquee implementant ... */
+            Comparator<Person>(){
+                    @Override
+                    public int compare(Person p1, Person p2) {
+                        return (p1.getSize() - p2.getSize());
+                    }
+                });
+        for(Person p : this.listePers){
+           System.out.println("p="+p.toString());
         }
     }
     private void ecrireFichier(String pathName){
