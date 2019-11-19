@@ -1,0 +1,4 @@
+nbPers=3
+tailleMax=183
+tailleMini=143
+tailleMoyenne=164.66666666666666

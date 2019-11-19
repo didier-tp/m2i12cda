@@ -23,6 +23,9 @@ import com.mycompany.dessin.fig.Cercle;
 import com.mycompany.dessin.fig.Figure;
 import com.mycompany.dessin.fig.Ligne;
 import com.mycompany.dessin.fig.Rectangle;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 
 public class FenetrePrincipale extends JFrame{
     
@@ -35,6 +38,7 @@ public class FenetrePrincipale extends JFrame{
 	private JComboBox<String> comboCouleur = new JComboBox<String>();
 	
     private JButton boutonEffacer = new JButton("effacer");
+    private JButton boutonSvg = new JButton("export svg");
     
     public FenetrePrincipale(){
         this.setTitle("dessin");
@@ -53,6 +57,7 @@ public class FenetrePrincipale extends JFrame{
         panelHaut.add(rbCercle); bg.add(rbCercle);
  	    rbLigne.setSelected(true);
         this.panelHaut.add(this.boutonEffacer);
+        this.panelHaut.add(this.boutonSvg);
        
                 
         this.boutonEffacer.addActionListener(new 
@@ -60,6 +65,14 @@ public class FenetrePrincipale extends JFrame{
                   ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 boutonEffacer_actionPerformed(e);
+            }
+        });
+        
+        this.boutonSvg.addActionListener(new 
+               /* classe anonyme imbriquée implementant ... */           
+                  ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                boutonSvg_actionPerformed(e);
             }
         });
         
@@ -96,6 +109,23 @@ public class FenetrePrincipale extends JFrame{
     	panelDessin.getListeFigures().clear();
     	panelDessin.repaint();
     	//this.panelDessin.effacerDessin();
+    }
+    
+     public void boutonSvg_actionPerformed(ActionEvent e){
+         try {
+             FileOutputStream fos = new FileOutputStream("figures.svg");
+             PrintStream ps = new PrintStream(fos);
+             StringBuilder sb = new StringBuilder();
+             sb.append("<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'>");
+             for (Figure fig : panelDessin.getListeFigures()) {
+                 sb.append(fig.toSvgString());
+             }
+             sb.append("</svg>");
+             ps.println(sb.toString());
+             ps.close(); fos.close();
+         } catch (IOException ex) {
+             ex.printStackTrace();
+         }
     }
     
 	

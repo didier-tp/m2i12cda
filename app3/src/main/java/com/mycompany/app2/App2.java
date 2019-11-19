@@ -1,11 +1,6 @@
 
 package com.mycompany.app2;
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> ba4dddfbea7099e7f457494e573faac1bcf87b48
 import javax.swing.JOptionPane;
 
 import org.slf4j.Logger;
@@ -21,17 +16,11 @@ public class App2 {
 	
 	private static Logger logger = LoggerFactory.getLogger(App2.class);
     
-    
-    
-    
     public static void main(String[] args) {
-<<<<<<< HEAD
     	fav2();
     }
         
     public static void fav1() {
-=======
->>>>>>> ba4dddfbea7099e7f457494e573faac1bcf87b48
         int a,b,c;
         try {
             a = Integer.parseInt(JOptionPane.showInputDialog("a"));
