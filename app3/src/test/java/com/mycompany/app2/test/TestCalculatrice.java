@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mycompany.app2.CalculatriceEx;
-import com.mycompany.app2.SimpleCalculatrice;
+import com.mycompany.app3.CalculatriceEx;
+import com.mycompany.app3.SimpleCalculatrice;
 
 public class TestCalculatrice {
 	

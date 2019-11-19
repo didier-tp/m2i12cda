@@ -1,4 +1,4 @@
-package com.mycompany.app2;
+package com.mycompany.app3;
 
 public class SimpleCalculatrice {
 	public double addition(double a,double b) {

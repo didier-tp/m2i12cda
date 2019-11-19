@@ -1,20 +1,20 @@
 
-package com.mycompany.app2;
+package com.mycompany.app3;
 
 import javax.swing.JOptionPane;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mycompany.util.BasicAbstractIHM;
 import com.mycompany.util.BasicDialogIHM;
+import com.mycompany.util.BasicIHM;
 
 /**
  * @author Administrateur
  */
-public class App2 {
+public class App3 {
 	
-	private static Logger logger = LoggerFactory.getLogger(App2.class);
+	private static Logger logger = LoggerFactory.getLogger(App3.class);
     
     public static void main(String[] args) {
     	fav2();
@@ -35,8 +35,10 @@ public class App2 {
     }
     
     public static void fav2() {
-    	//BasicAbstractIHM myBasicIhm = new BasicTextIHM();
-    	BasicAbstractIHM myBasicIhm = new BasicDialogIHM();
+    	//BasicAbstractIHM myBasicIhm = new BasicAbstractIHM();//new impossible sur classe abstraite
+    	BasicIHM myBasicIhm = null;//classe abstraite ou interface = type de référence possible
+    	//myBasicIhm = new BasicTextIHM();
+    	myBasicIhm = new BasicDialogIHM();
         int a,b,c;
         try {
             a = Integer.parseInt(myBasicIhm.saisir("a"));

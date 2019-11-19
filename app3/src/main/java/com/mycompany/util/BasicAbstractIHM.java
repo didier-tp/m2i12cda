@@ -1,9 +1,11 @@
 package com.mycompany.util;
 
-public abstract class BasicAbstractIHM {
+public abstract class BasicAbstractIHM implements BasicIHM{
 	    private String defaultTitle="my java application";
-		public abstract String saisir(String prompt);
-		public abstract void afficher(String message);
+	    
+	    //maintenant imposé par l'interface
+		//public abstract String saisir(String prompt);
+		//public abstract void afficher(String message);
 		
 		public String getDefaultTitle() {
 			return defaultTitle;
