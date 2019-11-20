@@ -10,6 +10,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.jupiter.version>5.4.2</junit.jupiter.version>
+        <mysql.version>8.0.15</mysql.version>
+        <h2.version>1.4.199</h2.version>
     </properties>
     
     <dependencies>
@@ -19,6 +21,17 @@
     		<!-- et indirectement slf4j-api , log4j-api , log4j-core -->
     		<version>2.11.1</version> 
          </dependency>
+         
+         <dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>${mysql.version}</version>
+		</dependency>
          
          <dependency>
     		<groupId>org.junit.jupiter</groupId>

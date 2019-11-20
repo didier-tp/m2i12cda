@@ -1,11 +1,16 @@
 
 package com.mycompany.app3;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.mycompany.dao.DeviseDao;
+import com.mycompany.dao.DeviseDaoSimulation;
+import com.mycompany.entity.Devise;
 import com.mycompany.util.BasicDialogIHM;
 import com.mycompany.util.BasicIHM;
 
@@ -17,9 +22,25 @@ public class App3 {
 	private static Logger logger = LoggerFactory.getLogger(App3.class);
     
     public static void main(String[] args) {
-    	fav2();
+    	//fav1();
+    	//fav2();
+    	testDevise();
     }
         
+    public static void testDevise() {
+    	DeviseDao deviseDao = null;
+    	deviseDao = new DeviseDaoSimulation();
+    	//deviseDao = new DeviseDaoJdbc();
+    	List<Devise> listeDevises = deviseDao.rechercherToutesDevise();
+    	System.out.println("Liste des devises:");
+    	for(Devise d : listeDevises) {
+    		System.out.println("\t"+d);
+    	}
+    	//exemple d'enchainement avec  stream et lambda (java >=8):
+    	listeDevises.stream().map( (d)-> { d.setNom(d.getNom().toUpperCase()); return d;})
+    	                     .forEach( (d) -> { System.out.println("\t >>> "+d);});
+    }
+    
     public static void fav1() {
         int a,b,c;
         try {

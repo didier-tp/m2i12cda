@@ -6,10 +6,11 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class MyJdbcUtil {
-		Connection etablishConnection() {
+	    //dbType="mysql" or "h2" or ...
+		public static Connection etablishConnection(String dbType) {
 			Connection cn=null;
 			try {
-				ResourceBundle ressources = ResourceBundle.getBundle("paramDB") ; // paramDB.properties
+				ResourceBundle ressources = ResourceBundle.getBundle("paramDB-"+dbType) ; // paramDB.properties
 				String driver = ressources.getString("driver"); 
 				String chUrl = ressources.getString("url");
 				String username = ressources.getString("username"); 
@@ -22,5 +23,13 @@ public class MyJdbcUtil {
 				e.printStackTrace();
 			} 
 			return cn;
+		}
+		
+		public static void closeConnection(Connection cn){
+			try {
+				cn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 }
