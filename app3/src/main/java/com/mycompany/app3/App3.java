@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mycompany.dao.DeviseDao;
+import com.mycompany.dao.DeviseDaoJdbc;
 import com.mycompany.dao.DeviseDaoSimulation;
 import com.mycompany.entity.Devise;
 import com.mycompany.util.BasicDialogIHM;
@@ -30,7 +31,7 @@ public class App3 {
     public static void testDevise() {
     	DeviseDao deviseDao = null;
     	deviseDao = new DeviseDaoSimulation();
-    	//deviseDao = new DeviseDaoJdbc();
+    	deviseDao = new DeviseDaoJdbc();
     	List<Devise> listeDevises = deviseDao.rechercherToutesDevise();
     	System.out.println("Liste des devises:");
     	for(Devise d : listeDevises) {
