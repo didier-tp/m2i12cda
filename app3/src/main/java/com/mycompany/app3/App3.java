@@ -24,9 +24,9 @@ public class App3 {
     
     public static void main(String[] args) {
     	try {
-			fav1();
+			//fav1();
 			//fav2();
-			//testDevise();
+			testDevise();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,8 +35,17 @@ public class App3 {
         
     public static void testDevise() {
     	DeviseDao deviseDao = null;
-    	deviseDao = new DeviseDaoSimulation();
+    	//deviseDao = new DeviseDaoSimulation();
     	deviseDao = new DeviseDaoJdbc();
+    	
+    	try {
+			Devise nouvelleDevise = new Devise("m3", "m3LeRetour" , 34.67);
+			deviseDao.sauvegarderNouvelleDevise(nouvelleDevise);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     	List<Devise> listeDevises = deviseDao.rechercherToutesDevise();
     	System.out.println("Liste des devises:");
     	for(Devise d : listeDevises) {

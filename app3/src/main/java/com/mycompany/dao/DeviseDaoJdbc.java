@@ -1,6 +1,7 @@
 package com.mycompany.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -16,8 +17,8 @@ public class DeviseDaoJdbc implements DeviseDao {
 		List<Devise> listeDevises = new ArrayList<>();
 		Connection cn = null;
 		try {
-			cn=MyJdbcUtil.etablishConnection("h2");
-			//cn=MyJdbcUtil.etablishConnection("mysql");
+			//cn=MyJdbcUtil.etablishConnection("h2");
+			cn=MyJdbcUtil.etablishConnection("mysql");
 			Statement st = cn.createStatement();
 			String reqSql = "SELECT * from Devise";
 			ResultSet rs = st.executeQuery(reqSql);
@@ -27,7 +28,7 @@ public class DeviseDaoJdbc implements DeviseDao {
 						                   rs.getDouble("dChange"));
 			    listeDevises.add(devise);
 			}
-			rs.close();
+			rs.close(); //fermetures dans l'ordre inverse des ouvertures
 			st.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,7 +46,30 @@ public class DeviseDaoJdbc implements DeviseDao {
 
 	@Override
 	public void sauvegarderNouvelleDevise(Devise d) {
-		// INSERT INTO
+		
+		Connection cn = null;
+		try {
+			//cn=MyJdbcUtil.etablishConnection("h2");
+			cn=MyJdbcUtil.etablishConnection("mysql");
+			
+			//Statement st = cn.createStatement();
+			//String reqSql = "INSERT INTO Devise(code,nom,dChange) VALUES('m1','monnaie1',12.4)";
+			//st.executeUpdate(reqSql);
+			
+			String reqSql = "INSERT INTO Devise(code,nom,dChange) VALUES(?,?,?)";
+			PreparedStatement pst = cn.prepareStatement(reqSql);
+			pst.setString(1, d.getCode()); //valeur de remplacement du premier ?
+			pst.setString(2, d.getNom()); //valeur de remplacement du second ?
+			pst.setDouble(3, d.getdChange()); //valeur de remplacement du troisieme ?
+			pst.executeUpdate();
+			 //fermetures dans l'ordre inverse des ouvertures
+			pst.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			MyJdbcUtil.closeConnection(cn);
+		}
+	
 		
 	}
 
