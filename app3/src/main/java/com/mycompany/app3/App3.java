@@ -23,9 +23,14 @@ public class App3 {
 	private static Logger logger = LoggerFactory.getLogger(App3.class);
     
     public static void main(String[] args) {
-    	//fav1();
-    	//fav2();
-    	testDevise();
+    	try {
+			fav1();
+			//fav2();
+			//testDevise();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	System.out.println("suite et fin");
     }
         
     public static void testDevise() {
@@ -47,13 +52,21 @@ public class App3 {
         try {
             a = Integer.parseInt(JOptionPane.showInputDialog("a"));
             b = Integer.parseInt(JOptionPane.showInputDialog("b"));
-            c = a / b;
+            //c = a / b;
+            c=diviser(a,b);
             logger.trace("a/b=" + c);
             JOptionPane.showMessageDialog(null, "a/b=" + c);
         }  catch (Exception e) {
         	logger.error("exception:" + e.getMessage());
             JOptionPane.showMessageDialog(null, "exception:" + e.getMessage());
         }
+    }
+    
+    public static int diviser(int x,int y) {
+    	if(y==0) 
+    		throw new RuntimeException("division par zero interdite");
+    	else
+    		return x/y;
     }
     
     public static void fav2() {
