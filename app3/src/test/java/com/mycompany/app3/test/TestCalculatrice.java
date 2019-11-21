@@ -1,4 +1,4 @@
-package com.mycompany.app2.test;
+package com.mycompany.app3.test;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
